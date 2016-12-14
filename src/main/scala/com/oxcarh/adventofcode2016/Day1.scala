@@ -15,9 +15,7 @@ object Day1 {
         case "L" => (Left, groups.group(2).toInt)
       }
     }).toList
-    val initialPosition = Position(0, 0)
-    val initialDirection = Directions.NORTH
-    val initialState = State(initialPosition, initialDirection)
+    val initialState = State(Position(0, 0), Directions.NORTH)
     val allStates = calculateAllStates(inputTurns, initialState)
     println(s"Solution 1: ${allStates.reverse.head.position.distanceTo(Position(0, 0))}")
     val firstStateRepeated = findFirstRepeated(allStates)
@@ -48,10 +46,12 @@ object Day1 {
   }
 
   case class Position(x: Int, y: Int) {
+
     def distanceTo(another: Position): Int = math.abs(x - another.x) + math.abs(y - another.y)
   }
 
   case class Direction(dx: Int, dy: Int) {
+
     def turn(turn: Turn): Direction = {
       this match {
         case Directions.NORTH => if (turn == Right) Directions.EAST else Directions.WEST
@@ -64,6 +64,7 @@ object Day1 {
   }
 
   case class State(position: Position, direction: Direction) {
+
     def move(turn: Turn, steps: Int): State = {
       val newDirection = direction.turn(turn)
       val newPosition = Position(position.x + (newDirection.dx * steps), position.y + (newDirection.dy * steps))
