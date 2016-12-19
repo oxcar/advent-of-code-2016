@@ -6,6 +6,9 @@ Solved days:
 
 * [Day 1: No Time for a Taxicab](http://adventofcode.com/2016/day/1) - 2 Stars [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day1.scala)
 * [Day 2: Bathroom Security](http://adventofcode.com/2016/day/2) - 2 Stars [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day2.scala)
+
+Yet to solve days:
+
 * [Day 3: Squares With Three Sides](https://adventofcode.com/2016/day/3)
 * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4)
 * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)
