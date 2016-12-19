@@ -13,11 +13,10 @@ Solved:
 * [Day 1: No Time for a Taxicab](http://adventofcode.com/2016/day/1) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day1.scala)
 * [Day 2: Bathroom Security](http://adventofcode.com/2016/day/2) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day2.scala)
 * [Day 3: Squares With Three Sides](https://adventofcode.com/2016/day/3) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day3.scala)
+* [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day4.scala)
 
 Not solved:
 
-
-* [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4)
 * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)
 * [Day 6: Signals and Noise](https://adventofcode.com/2016/day/6)
 * [Day 7: Internet Protocol Version 7](https://adventofcode.com/2016/day/7)
