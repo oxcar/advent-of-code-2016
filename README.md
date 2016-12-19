@@ -16,6 +16,17 @@ Solved:
 * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day4.scala)
 * [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
 
+````
+  --------Part 1--------   --------Part 2--------
+  Day       Time   Rank  Score       Time   Rank  Score
+  1       >24h  13954      0       >24h  10759      0
+  2       >24h  10876      0       >24h  10260      0
+  3       >24h  10631      0       >24h   9414      0
+  4       >24h   8259      0       >24h   7822      0
+  19   05:30:18    961      0   06:34:24    514      0
+  
+```` 
+
 Not solved:
 
 * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)
