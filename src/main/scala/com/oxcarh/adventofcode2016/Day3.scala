@@ -8,17 +8,31 @@ object Day3 extends App {
 
   val input = loadDayInputAsText(3).split("\n")
 
-  val validTriangles = input.toList.foldLeft(0) { (validTriangles: Int, line) =>
-    if (Triangle(line).isValid) validTriangles + 1
-    else validTriangles
-  }
-
+  // Solution 1
+  val validTriangles = input.map(Triangle(_)).count(_.isValid)
   println(s"Solution 1: $validTriangles")
+
+  // Soultion 2
+  val matrix = createTransposeMatrixFromInput(input)
+  val validTriangles2 = matrix.foldLeft(0) { (validTriangles, row) =>
+    row.grouped(3)
+      .toList
+      .map(t => Triangle(t(0), t(1), t(2)))
+      .count(t => t.isValid) + validTriangles
+  }
+  println(s"Solution 2: $validTriangles2")
+
+  // ----------
 
   case class Triangle(a: Int, b: Int, c: Int) {
 
-    def isValid: Boolean = {
-      (a + b > c ) && (a + c > b) && (b + c > a)
+    def isValid: Boolean = (a + b > c) && (a + c > b) && (b + c > a)
+
+    def isSameSeries: Boolean = {
+      val (x, y, z) = (a.toString, b.toString, c.toString)
+      if (a / 100 == b / 100 && a / 100 == c / 100) true
+      // if ((x.length == y.length && x.length == z.length) && (x.head == y.head && x.head == z.head)) true
+      else false
     }
   }
 
@@ -29,6 +43,14 @@ object Day3 extends App {
       val groups = pattern.findAllIn(sides)
       new Triangle(groups.group(1).toInt, groups.group(2).toInt, groups.group(3).toInt)
     }
+  }
+
+  def createTransposeMatrixFromInput(lines: Array[String]): Array[Array[Int]] = {
+    lines.map { line =>
+      val pattern = """(\d+)[\s]*(\d+)[\s]*(\d+)""".r
+      val groups = pattern.findAllIn(line)
+      Array(groups.group(1).toInt, groups.group(2).toInt, groups.group(3).toInt)
+    }.transpose
   }
 
 }
