@@ -22,7 +22,7 @@ object Day3 extends App {
   }
   println(s"Solution 2: $validTriangles2")
 
-  // ----------
+  // ----------------------------------------------------------------------
 
   case class Triangle(a: Int, b: Int, c: Int) {
 

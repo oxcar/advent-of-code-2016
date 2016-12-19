@@ -4,8 +4,10 @@ import com.oxcarh.adventofcode2016.Tools._
 
 object Day1 extends App {
 
-  println("Day 1")
+  println("Day 1: No Time for a Taxicab")
+
   val input: Array[String] = loadDayInputAsText(1).split(", ")
+
   val pattern = """([RL])(\d+)""".r
   val inputTurns = input.map(s => {
     val groups = pattern.findAllIn(s)
@@ -16,9 +18,15 @@ object Day1 extends App {
   }).toList
   val initialState = State(Position(0, 0), Directions.NORTH)
   val allStates = calculateAllStates(inputTurns, initialState)
+
+  // Solution 1
   println(s"Solution 1: ${allStates.reverse.head.position.distanceTo(Position(0, 0))}")
+
+  // Solution 2
   val firstStateRepeated = findFirstRepeated(allStates)
   println(s"Solution 2: ${firstStateRepeated.position.distanceTo(Position(0, 0))}")
+
+  // ----------------------------------------------------------------------
 
   def calculateAllStates(input: List[(Turn, Int)], initialState: State): Array[State] = {
     var states = Array[State](initialState)
