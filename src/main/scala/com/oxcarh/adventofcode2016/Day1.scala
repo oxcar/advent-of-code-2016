@@ -1,30 +1,24 @@
 package com.oxcarh.adventofcode2016
 
-import scala.io.Source
+import com.oxcarh.adventofcode2016.Tools._
 
-object Day1 {
+object Day1 extends App {
 
-  def main(args: Array[String]): Unit = {
-    println("Day 1")
-    val input: Array[String] = loadInputText().split(", ")
-    val pattern = """([RL])(\d+)""".r
-    val inputTurns = input.map(s => {
-      val groups = pattern.findAllIn(s)
-      groups.group(1) match {
-        case "R" => (Right, groups.group(2).toInt)
-        case "L" => (Left, groups.group(2).toInt)
-      }
-    }).toList
-    val initialState = State(Position(0, 0), Directions.NORTH)
-    val allStates = calculateAllStates(inputTurns, initialState)
-    println(s"Solution 1: ${allStates.reverse.head.position.distanceTo(Position(0, 0))}")
-    val firstStateRepeated = findFirstRepeated(allStates)
-    println(s"Solution 2: ${firstStateRepeated.position.distanceTo(Position(0, 0))}")
-  }
-
-  def loadInputText(): String = {
-    Source.fromInputStream(getClass.getResourceAsStream("/input_day1.txt")).mkString
-  }
+  println("Day 1")
+  val input: Array[String] = loadDayInputAsText(1).split(", ")
+  val pattern = """([RL])(\d+)""".r
+  val inputTurns = input.map(s => {
+    val groups = pattern.findAllIn(s)
+    groups.group(1) match {
+      case "R" => (Right, groups.group(2).toInt)
+      case "L" => (Left, groups.group(2).toInt)
+    }
+  }).toList
+  val initialState = State(Position(0, 0), Directions.NORTH)
+  val allStates = calculateAllStates(inputTurns, initialState)
+  println(s"Solution 1: ${allStates.reverse.head.position.distanceTo(Position(0, 0))}")
+  val firstStateRepeated = findFirstRepeated(allStates)
+  println(s"Solution 2: ${firstStateRepeated.position.distanceTo(Position(0, 0))}")
 
   def calculateAllStates(input: List[(Turn, Int)], initialState: State): Array[State] = {
     var states = Array[State](initialState)
