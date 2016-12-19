@@ -14,7 +14,7 @@ Solved:
 * [Day 2: Bathroom Security](http://adventofcode.com/2016/day/2) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day2.scala)
 * [Day 3: Squares With Three Sides](https://adventofcode.com/2016/day/3) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day3.scala)
 * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day4.scala)
-* [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
+* [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
 
 Not solved:
 

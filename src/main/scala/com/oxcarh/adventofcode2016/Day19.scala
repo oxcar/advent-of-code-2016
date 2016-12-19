@@ -6,11 +6,17 @@ object Day19 extends App {
 
   val numberOfElves = 3012210
 
+  // Solution 1
   val elves = Array.fill[Int](numberOfElves)(1)
-  while (elves.indexOf(numberOfElves) == -1) {
-    stealPresents(elves)
-  }
+  while (elves.indexOf(numberOfElves) == -1) stealPresents(elves)
   println(s"Solution 1: ${elves.indexOf(numberOfElves) + 1}")
+
+  // Solution 2
+  var i = 1
+  while (i * 3 < numberOfElves) i *= 3
+  println(s"Solution 2: ${numberOfElves - i}")
+
+  // ----------------------------------------------------------------------
 
   def stealPresents(elves: Array[Int]): Unit = {
     for (i <- elves.indices) {
