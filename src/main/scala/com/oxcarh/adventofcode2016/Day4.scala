@@ -6,7 +6,7 @@ object Day4 extends App {
 
   println("Day 4: Security Through Obscurity")
 
-  val input = loadDayInputAsText(4).split("\n")
+  val input = loadDayInputAsText(day = 4).split("\n")
 
   // Solution 1
   val validRoomsSectorIdCount = input.foldLeft(0) { (validRooms, line) =>
