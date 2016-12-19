@@ -1,6 +1,12 @@
 # Advent of Code 2016
 
-This repo holds my [Advent of Code 2016](http://adventofcode.com/2016/) solutions in Scala.
+This repo holds my [Advent of Code 2016](http://adventofcode.com/2016/) solutions.
+
+I'm using Scala (2.12) to improve my skills. 
+
+My objetive is to make the best code I can and try to solve the problems using functional programming, hoping to learn something in the process. 
+
+I do not intend to compete for fast times on the leaderboards this year.
 
 Solved:
 
