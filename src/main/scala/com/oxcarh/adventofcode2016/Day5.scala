@@ -1,14 +1,16 @@
+
+// Day 5: How About a Nice Game of Chess?
+// https://adventofcode.com/2016/day/5
+
 package com.oxcarh.adventofcode2016
 
 import java.security.MessageDigest
 
 object Day5 extends App {
 
-  println("Day 5: How About a Nice Game of Chess?")
+  val input = Tools.loadDayInputAsText(day = 5)
 
-  val input = "ffykfhsq"
-
-  // Solution 1
+  // Solution 1 ------------------------------------------------------------
   {
     var solution = Array[Char]()
     var counter: Long = 0
@@ -21,7 +23,7 @@ object Day5 extends App {
     println(solution.mkString)
   }
 
-  // Solution 2
+  // Solution 2 ------------------------------------------------------------
   {
     val solution = Array.fill[Char](8)('X')
     var counter: Long = 0
