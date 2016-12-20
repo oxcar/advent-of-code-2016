@@ -1,18 +1,20 @@
+
+// Day 3: Squares With Three Sides
+// https://adventofcode.com/2016/day/3
+
 package com.oxcarh.adventofcode2016
 
 import com.oxcarh.adventofcode2016.Tools._
 
 object Day3 extends App {
 
-  println("Day 3: Squares With Three Sides")
-
   val input = loadDayInputAsText(3).split("\n")
 
-  // Solution 1
+  // Solution 1 ------------------------------------------------------------
   val validTriangles = input.map(Triangle(_)).count(_.isValid)
   println(s"Solution 1: $validTriangles")
 
-  // Soultion 2
+  // Solution 2 ------------------------------------------------------------
   val transposeInput = createTransposeInput(input)
   val validTriangles2 = transposeInput.foldLeft(0) { (validTriangles, row) =>
     row.grouped(3)
