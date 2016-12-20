@@ -1,14 +1,16 @@
+
+// Day 4: Security Through Obscurity
+// https://adventofcode.com/2016/day/4
+
 package com.oxcarh.adventofcode2016
 
 import com.oxcarh.adventofcode2016.Tools.loadDayInputAsText
 
 object Day4 extends App {
 
-  println("Day 4: Security Through Obscurity")
-
   val input = loadDayInputAsText(day = 4).split("\n")
 
-  // Solution 1
+  // Solution 1 ------------------------------------------------------------
   val validRoomsSectorIdCount = input.foldLeft(0) { (validRooms, line) =>
     val room = Room(line)
     if (room.isValid) validRooms + room.sectorId
@@ -16,7 +18,7 @@ object Day4 extends App {
   }
   println(s"Solution 1: $validRoomsSectorIdCount")
 
-  // Solution 2
+  // Solution 2 ------------------------------------------------------------
   val room = input.map(Room)
     .filter(_.isValid)
     .filter(room => room.decryptRoomName.contains("north") || room.decryptRoomName.contains("pole"))
@@ -49,12 +51,12 @@ object Day4 extends App {
 
     def decryptRoomName: String = {
       roomName.map { c =>
-        if(c != ' ') {
+        if (c != ' ') {
           var counter = sectorId
           var c2 = c.toInt
-          while(counter > 0) {
+          while (counter > 0) {
             c2 = c2 + 1
-            if(c2 > 'z'.toInt) c2 = 'a'.toInt
+            if (c2 > 'z'.toInt) c2 = 'a'.toInt
             counter = counter - 1
           }
           c2.toChar
