@@ -42,24 +42,15 @@ object Day7 extends App {
   }
 
   def supportsSSL(ip: String): Boolean = {
-    val p1 = """(\[[a-z]*\])""".r
-    val brackets = p1.findAllIn(ip)
+    val p1 = """\[([a-z]*)\]""".r
+    val brackets = p1.findAllIn(ip).toList
     val noBrackets = p1.replaceAllIn(ip, "-").split("-")
-
     noBrackets.count { sip =>
-      val abas = extractABAs(sip)
-      if (abas.nonEmpty && brackets.nonEmpty) {
-        abas.count{ aba =>
-          val bab = aba.charAt(1).toString + aba.charAt(0).toString + aba.charAt(1).toString
-          brackets.count(_.contains(bab)) > 0
-        } > 0
-      } else false
+      val babs = extractABAs(sip).map(aba => aba.slice(1, 2) + aba.take(1) + aba.slice(1, 2))
+      babs.count { bab =>
+        brackets.count(_.contains(bab)) > 0
+      } > 0
     } > 0
-  }
-
-  def hasABA(ip: String): Boolean = {
-    val p1 = """([a-z])((?:(?!\1).))\1""".r
-    p1.findAllIn(ip).nonEmpty
   }
 
   def extractABAs(sip: String): Array[String] = {
