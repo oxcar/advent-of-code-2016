@@ -16,6 +16,7 @@ I do not intend to compete for fast times on the leaderboards this year.
 * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day4.scala)
 * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day5.scala)
 * [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
+* [Day 20: Firewall Rules](https://adventofcode.com/2016/day/20) &#x2605;&#x2605; - [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day20.scala)
  
 
 ## Not solved
