@@ -12,23 +12,59 @@ object Day7 extends App {
 
   val solution1 = input
     .split("\n")
-    .filter(hasAbba)
-    .count(!hasAbbaInsideBrackets(_))
+    .count(supportsTLS)
 
   println(s"Solution 1: $solution1")
 
+  // Solution 2 -----------------------------------------------------------
+
+  val solution2 = input
+    .split("\n")
+    .count(supportsSSL)
+
+  println(s"Solution 2: $solution2")
+
   // ----------------------------------------------------------------------
 
-  def hasAbba(ip7: String): Boolean = {
-    val p = """.*([a-z])((?:(?!\1).))(\2)\1.*""".r
-    p.findAllMatchIn(ip7).nonEmpty
+  def supportsTLS(ip: String): Boolean = {
+    hasAbba(ip) && !hasAbbaInsideBrackets(ip)
   }
 
-  def hasAbbaInsideBrackets(ip7: String): Boolean = {
+  def hasAbba(ip: String): Boolean = {
+    val p = """.*([a-z])((?:(?!\1).))(\2)\1.*""".r
+    p.findAllMatchIn(ip).nonEmpty
+  }
+
+  def hasAbbaInsideBrackets(ip: String): Boolean = {
     val p1 = """\[([a-z]*)\]""".r
     val p2 = """(?<=\[)[a-z]*([a-z])((?:(?!\1).))(\2)\1[a-z]*(?=\])""".r
-    val hits = p1.findAllIn(ip7).count(p2.findAllIn(_).nonEmpty)
-    hits > 0
+    p1.findAllIn(ip).count(p2.findAllIn(_).nonEmpty) > 0
+  }
+
+  def supportsSSL(ip: String): Boolean = {
+    val p1 = """(\[[a-z]*\])""".r
+    val brackets = p1.findAllIn(ip)
+    val noBrackets = p1.replaceAllIn(ip, "-").split("-")
+
+    noBrackets.count { sip =>
+      val abas = extractABAs(sip)
+      if (abas.nonEmpty && brackets.nonEmpty) {
+        abas.count{ aba =>
+          val bab = aba.charAt(1).toString + aba.charAt(0).toString + aba.charAt(1).toString
+          brackets.count(_.contains(bab)) > 0
+        } > 0
+      } else false
+    } > 0
+  }
+
+  def hasABA(ip: String): Boolean = {
+    val p1 = """([a-z])((?:(?!\1).))\1""".r
+    p1.findAllIn(ip).nonEmpty
+  }
+
+  def extractABAs(sip: String): Array[String] = {
+    val p1 = """([a-z])((?:(?!\1).))\1""".r
+    p1.findAllIn(sip).toArray
   }
 
 }
