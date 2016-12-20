@@ -27,15 +27,15 @@ object Day7 extends App {
   // ----------------------------------------------------------------------
 
   def supportsTLS(ip: String): Boolean = {
-    hasAbba(ip) && !hasAbbaInsideBrackets(ip)
+    hasABBA(ip) && !hasABBAInsideBrackets(ip)
   }
 
-  def hasAbba(ip: String): Boolean = {
+  def hasABBA(ip: String): Boolean = {
     val p = """.*([a-z])((?:(?!\1).))(\2)\1.*""".r
     p.findAllMatchIn(ip).nonEmpty
   }
 
-  def hasAbbaInsideBrackets(ip: String): Boolean = {
+  def hasABBAInsideBrackets(ip: String): Boolean = {
     val p1 = """\[([a-z]*)\]""".r
     val p2 = """(?<=\[)[a-z]*([a-z])((?:(?!\1).))(\2)\1[a-z]*(?=\])""".r
     p1.findAllIn(ip).count(p2.findAllIn(_).nonEmpty) > 0
@@ -43,7 +43,7 @@ object Day7 extends App {
 
   def supportsSSL(ip: String): Boolean = {
     val p1 = """\[([a-z]*)\]""".r
-    val brackets = p1.findAllIn(ip).toList
+    val brackets = p1.findAllIn(ip).toArray
     val noBrackets = p1.replaceAllIn(ip, "-").split("-")
     noBrackets.count { sip =>
       val babs = extractABAs(sip).map(aba => aba.slice(1, 2) + aba.take(1) + aba.slice(1, 2))
@@ -54,8 +54,8 @@ object Day7 extends App {
   }
 
   def extractABAs(sip: String): Array[String] = {
-    val p1 = """([a-z])((?:(?!\1).))\1""".r
-    p1.findAllIn(sip).toArray
+    val p = """([a-z])((?:(?!\1)[a-z]))\1""".r
+    sip.sliding(3).flatMap(p.findFirstIn).toArray
   }
 
 }

@@ -14,7 +14,7 @@ My objetive is to make the best code I can and try to solve the problems using f
 * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day4.scala)
 * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day5.scala)
 * [Day 6: Signals and Noise](https://adventofcode.com/2016/day/6) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day6.scala)
-* [Day 7: Internet Protocol Version 7](https://adventofcode.com/2016/day/7) &#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day7.scala)
+* [Day 7: Internet Protocol Version 7](https://adventofcode.com/2016/day/7) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day7.scala)
 * [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
 * [Day 20: Firewall Rules](https://adventofcode.com/2016/day/20) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day20.scala)
  
@@ -45,7 +45,7 @@ My objetive is to make the best code I can and try to solve the problems using f
     4       >24h   8259      0       >24h   7822      0
     5       >24h   7750      0       >24h   7373      0
     6       >24h   7821      0       >24h   7577      0
-    7       >24h   6687      0          -      -      -
+    7       >24h   6687      0       >24h   5914      0
    19   05:30:18    961      0   06:34:24    514      0
    20   01:43:22    488      0   01:45:45    392      0
   
