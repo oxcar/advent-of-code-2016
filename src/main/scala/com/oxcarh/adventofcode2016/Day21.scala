@@ -6,7 +6,7 @@ package com.oxcarh.adventofcode2016
 
 object Day21 extends App {
 
-  val input = Tools.loadDayInputAsText(day = 21)
+  val input = Tools.loadDayInputAsText(day = 21).split("\n")
 
   // Solution 1 ------------------------------------------------------------
 
@@ -19,7 +19,7 @@ object Day21 extends App {
   val p5 = """reverse positions (\d) through (\d)""".r
   val p6 = """move position (\d) to position (\d)""".r
 
-  val scrambledPassword = input.split("\n").foldLeft(passwordInput) { (acc, line) =>
+  val scrambledPassword = input.foldLeft(passwordInput) { (acc, line) =>
     line match {
       case p1(direction, steps) => rotate(acc, direction, steps.toInt)
       case p2(position1, position2) => swapPosition(acc, position1.toInt, position2.toInt)
@@ -38,7 +38,7 @@ object Day21 extends App {
   val passwordInput2 = "fbgdceah"
   implicit val passwordPermutations = "abcdefgh".toCharArray.permutations.map(_.mkString).toArray
 
-  val unscrambledPassword = input.split("\n").reverse.foldLeft(passwordInput2) { (acc, line) =>
+  val unscrambledPassword = input.reverse.foldLeft(passwordInput2) { (acc, line) =>
     line match {
       case p1(direction, steps) => reverseRotate(acc, direction, steps.toInt)
       case p2(position1, position2) => swapPosition(acc, position1.toInt, position2.toInt)
@@ -51,6 +51,8 @@ object Day21 extends App {
   }
 
   println(s"Solution 2: $unscrambledPassword")
+
+  // ----------------------------------------------------------------------
 
   def rotate(s: String, direction: String, steps: Int): String = {
     if (steps == 0) s
