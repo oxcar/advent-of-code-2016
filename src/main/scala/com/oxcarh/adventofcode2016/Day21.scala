@@ -4,6 +4,8 @@ object Day21 extends App {
 
   val input = Tools.loadDayInputAsText(day = 21)
 
+  // Solution 1 ------------------------------------------------------------
+
   var passwordInput = "abcdefgh"
 
   val p1 = """rotate (right|left) (\d) step[s]*""".r
@@ -27,6 +29,8 @@ object Day21 extends App {
 
   println(s"Solution 1: $scrambledPassword")
 
+  // Solution 2 ------------------------------------------------------------
+
   val passwordInput2 = "fbgdceah"
   implicit val passwordPermutations = "abcdefgh".toCharArray.permutations.map(_.mkString).toArray
 
@@ -37,7 +41,7 @@ object Day21 extends App {
       case p3(letter) => reverseRrotateOnLetterPosition(acc, letter)
       case p4(letter1, letter2) => swapLetter(acc, letter1, letter2)
       case p5(position1, position2) => reversePositions(acc, position1.toInt, position2.toInt)
-      case p6(position1, position2) => reverseMovePosition(acc, position1.toInt, position2.toInt)
+      case p6(position1, position2) => movePosition(acc, position2.toInt, position1.toInt)
       case _ => acc
     }
   }
@@ -65,19 +69,12 @@ object Day21 extends App {
 
   def swapPosition(s: String, position1: Integer, position2: Integer): String = {
     val (p1, p2) = orderPositions(position1, position2)
-    val slice1 = if (p1 > 0) s.slice(0, p1) else ""
-    val slice2 = s(p1)
-    val slice3 = if (p2 > p1 + 1) s.slice(p1 + 1, p2) else ""
-    val slice4 = s(p2)
-    val slice5 = if (p2 < s.length - 1) s.slice(p2 + 1, s.length) else ""
-    slice1 + slice4 + slice3 + slice2 + slice5
+    s.slice(0, p1) + s(p2) + s.slice(p1 + 1, p2) + s(p1) + s.slice(p2 + 1, s.length)
   }
 
   def rotateOnLetterPosition(s: String, letter: String): String = {
     val p = s.indexOf(letter)
-    val steps = 1 + p + {
-      if (p >= 4) 1 else 0
-    }
+    val steps = 1 + p + (if (p >= 4) 1 else 0)
     rotate(s, "right", steps)
   }
 
@@ -87,18 +84,11 @@ object Day21 extends App {
       .head
   }
 
-  def swapLetter(s: String, l1: String, l2: String): String = {
-    val p1 = s.indexOf(l1)
-    val p2 = s.indexOf(l2)
-    swapPosition(s, p1, p2)
-  }
+  def swapLetter(s: String, l1: String, l2: String): String = swapPosition(s, s.indexOf(l1), s.indexOf(l2))
 
   def reversePositions(s: String, position1: Int, position2: Int): String = {
     val (p1, p2) = orderPositions(position1, position2)
-    val slice1 = if (p1 > 0) s.slice(0, p1) else ""
-    val slice2 = s.slice(p1, p2 + 1).reverse
-    val slice3 = if (p2 < s.length - 1) s.slice(p2 + 1, s.length) else ""
-    slice1 + slice2 + slice3
+    s.slice(0, p1) + s.slice(p1, p2 + 1).reverse + s.slice(p2 + 1, s.length)
   }
 
   def movePosition(s: String, position1: Int, position2: Int): String = {
@@ -106,8 +96,6 @@ object Day21 extends App {
     val tmp = s.slice(0, position1) + s.slice(position1 + 1, s.length)
     tmp.slice(0, position2) + letter + tmp.slice(position2, s.length)
   }
-
-  def reverseMovePosition(s: String, position1: Int, position2: Int): String = movePosition(s, position2, position1)
 
   def orderPositions(p1: Int, p2: Int): (Int, Int) = {
     if (p1 < p2) (p1, p2) else (p2, p1)
