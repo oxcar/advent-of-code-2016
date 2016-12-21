@@ -1,28 +1,29 @@
-package com.oxcarh.adventofcode2016
 
-import com.oxcarh.adventofcode2016.Tools._
+// Day 1: No Time for a Taxicab
+// https://adventofcode.com/2016/day/1
+
+package com.oxcarh.adventofcode2016
 
 object Day1 extends App {
 
-  println("Day 1: No Time for a Taxicab")
-
-  val input: Array[String] = loadDayInputAsText(1).split(", ")
+  val input = Tools.loadDayInputAsText(day = 1).split(", ")
 
   val pattern = """([RL])(\d+)""".r
-  val inputTurns = input.map(s => {
-    val groups = pattern.findAllIn(s)
-    groups.group(1) match {
-      case "R" => (Right, groups.group(2).toInt)
-      case "L" => (Left, groups.group(2).toInt)
-    }
-  }).toList
+
+  val inputTurns = input.map {
+    case pattern("R", steps) => (Right, steps.toInt)
+    case pattern("L", steps) => (Left, steps.toInt)
+  }.toList
+
   val initialState = State(Position(0, 0), Directions.NORTH)
   val allStates = calculateAllStates(inputTurns, initialState)
 
-  // Solution 1
+  // Solution 1 ------------------------------------------------------------
+
   println(s"Solution 1: ${allStates.reverse.head.position.distanceTo(Position(0, 0))}")
 
-  // Solution 2
+  // Solution 2 ------------------------------------------------------------
+
   val firstStateRepeated = findFirstRepeated(allStates)
   println(s"Solution 2: ${firstStateRepeated.position.distanceTo(Position(0, 0))}")
 
