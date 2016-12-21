@@ -77,7 +77,9 @@ object Day21 extends App {
 
   def swapPosition(s: String, pos1: Integer, pos2: Integer): String = {
     val (p1, p2) = orderPositions(pos1, pos2)
-    s.slice(0, p1) + s(p2) + s.slice(p1 + 1, p2) + s(p1) + s.slice(p2 + 1, s.length)
+    s.updated(p2, s(p1)).updated(p1, s(p2))
+    // alternative and harder way to do it
+    // s.slice(0, p1) + s(p2) + s.slice(p1 + 1, p2) + s(p1) + s.slice(p2 + 1, s.length)
   }
 
   def rotateOnLetterPosition(s: String, letter: String): String = {
