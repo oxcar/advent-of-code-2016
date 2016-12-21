@@ -6,7 +6,7 @@ I'm using Scala (2.12).
 
 My objetive is to make the best code I can and try to solve the problems using functional programming, hoping to learn something in the process. 
 
-## Solved &#8594; 18 &#x2605;
+## Solved &#8594; 20 &#x2605;
 
 * [Day 1: No Time for a Taxicab](http://adventofcode.com/2016/day/1) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day1.scala)
 * [Day 2: Bathroom Security](http://adventofcode.com/2016/day/2) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day2.scala)
