@@ -32,6 +32,10 @@ More info at https://www.reddit.com/r/adventofcode/.
 * [Day 16: Dragon Checksum](https://adventofcode.com/2016/day/16)
 * [Day 17: Two Steps Forward](https://adventofcode.com/2016/day/17)
 * [Day 18: Like a Rogue](https://adventofcode.com/2016/day/18)
+* Day 22
+* Day 23
+* Day 24
+* Day 25
 
 ## Personal Statistics
 
