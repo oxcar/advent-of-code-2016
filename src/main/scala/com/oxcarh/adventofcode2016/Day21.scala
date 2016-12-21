@@ -4,6 +4,8 @@
 
 package com.oxcarh.adventofcode2016
 
+import scala.annotation.tailrec
+
 object Day21 extends App {
 
   val input = Tools.loadDayInputAsText(day = 21).split("\n")
@@ -12,22 +14,22 @@ object Day21 extends App {
 
   var passwordInput = "abcdefgh"
 
-  val p1 = """rotate (right|left) (\d) step[s]*""".r
-  val p2 = """swap position (\d) with position (\d)""".r
-  val p3 = """rotate based on position of letter (\w)""".r
-  val p4 = """swap letter (\w) with letter (\w)""".r
-  val p5 = """reverse positions (\d) through (\d)""".r
-  val p6 = """move position (\d) to position (\d)""".r
+  val patt1 = """rotate (right|left) (\d) step[s]*""".r
+  val patt2 = """swap position (\d) with position (\d)""".r
+  val patt3 = """rotate based on position of letter (\w)""".r
+  val patt4 = """swap letter (\w) with letter (\w)""".r
+  val patt5 = """reverse positions (\d) through (\d)""".r
+  val patt6 = """move position (\d) to position (\d)""".r
 
-  val scrambledPassword = input.foldLeft(passwordInput) { (acc, line) =>
+  val scrambledPassword = input.foldLeft(passwordInput) { (passw, line) =>
     line match {
-      case p1(direction, steps) => rotate(acc, direction, steps.toInt)
-      case p2(position1, position2) => swapPosition(acc, position1.toInt, position2.toInt)
-      case p3(letter) => rotateOnLetterPosition(acc, letter)
-      case p4(letter1, letter2) => swapLetter(acc, letter1, letter2)
-      case p5(position1, position2) => reversePositions(acc, position1.toInt, position2.toInt)
-      case p6(position1, position2) => movePosition(acc, position1.toInt, position2.toInt)
-      case _ => acc
+      case patt1(direction, steps) => rotate(passw, direction, steps.toInt)
+      case patt2(pos1, pos2) => swapPosition(passw, pos1.toInt, pos2.toInt)
+      case patt3(letter) => rotateOnLetterPosition(passw, letter)
+      case patt4(letter1, letter2) => swapLetter(passw, letter1, letter2)
+      case patt5(pos1, pos2) => reversePositions(passw, pos1.toInt, pos2.toInt)
+      case patt6(pos1, pos2) => movePosition(passw, pos1.toInt, pos2.toInt)
+      case _ => passw
     }
   }
 
@@ -36,17 +38,18 @@ object Day21 extends App {
   // Solution 2 ------------------------------------------------------------
 
   val passwordInput2 = "fbgdceah"
+  // Password permutations are used to brute force guess the reverse of Rotate on Letter Position
   implicit val passwordPermutations = "abcdefgh".toCharArray.permutations.map(_.mkString).toArray
 
-  val unscrambledPassword = input.reverse.foldLeft(passwordInput2) { (acc, line) =>
+  val unscrambledPassword = input.reverse.foldLeft(passwordInput2) { (passw, line) =>
     line match {
-      case p1(direction, steps) => reverseRotate(acc, direction, steps.toInt)
-      case p2(position1, position2) => swapPosition(acc, position1.toInt, position2.toInt)
-      case p3(letter) => reverseRrotateOnLetterPosition(acc, letter)
-      case p4(letter1, letter2) => swapLetter(acc, letter1, letter2)
-      case p5(position1, position2) => reversePositions(acc, position1.toInt, position2.toInt)
-      case p6(position1, position2) => movePosition(acc, position2.toInt, position1.toInt)
-      case _ => acc
+      case patt1(direction, steps) => reverseRotate(passw, direction, steps.toInt)
+      case patt2(pos1, pos2) => swapPosition(passw, pos1.toInt, pos2.toInt)
+      case patt3(letter) => reverseRrotateOnLetterPosition(passw, letter)
+      case patt4(letter1, letter2) => swapLetter(passw, letter1, letter2)
+      case patt5(pos1, pos2) => reversePositions(passw, pos1.toInt, pos2.toInt)
+      case patt6(pos1, pos2) => movePosition(passw, pos2.toInt, pos1.toInt)
+      case _ => passw
     }
   }
 
@@ -54,6 +57,7 @@ object Day21 extends App {
 
   // ----------------------------------------------------------------------
 
+  @tailrec
   def rotate(s: String, direction: String, steps: Int): String = {
     if (steps == 0) s
     else {
