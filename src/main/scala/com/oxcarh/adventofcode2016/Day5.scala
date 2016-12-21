@@ -11,6 +11,7 @@ object Day5 extends App {
   val input = Tools.loadDayInputAsText(day = 5)
 
   // Solution 1 ------------------------------------------------------------
+
   {
     var solution = Array[Char]()
     var counter: Long = 0
@@ -24,6 +25,7 @@ object Day5 extends App {
   }
 
   // Solution 2 ------------------------------------------------------------
+
   {
     val solution = Array.fill[Char](8)('X')
     var counter: Long = 0
