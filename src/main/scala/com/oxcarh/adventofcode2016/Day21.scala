@@ -76,9 +76,9 @@ object Day21 extends App {
   }
 
   def swapPosition(s: String, pos1: Integer, pos2: Integer): String = {
-    val (p1, p2) = orderPositions(pos1, pos2)
-    s.updated(p2, s(p1)).updated(p1, s(p2))
+    s.updated(pos2, s(pos1)).updated(pos1, s(pos2))
     // alternative and harder way to do it
+    // val (p1, p2) = orderPositions(pos1, pos2)
     // s.slice(0, p1) + s(p2) + s.slice(p1 + 1, p2) + s(p1) + s.slice(p2 + 1, s.length)
   }
 
