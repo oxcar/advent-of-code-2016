@@ -21,8 +21,8 @@ object Day21 extends App {
   val patt5 = """reverse positions (\d) through (\d)""".r
   val patt6 = """move position (\d) to position (\d)""".r
 
-  val scrambledPassword = input.foldLeft(passwordInput) { (passw, line) =>
-    line match {
+  val scrambledPassword = input.foldLeft(passwordInput) { (passw, instruction) =>
+    instruction match {
       case patt1(direction, steps) => rotate(passw, direction, steps.toInt)
       case patt2(pos1, pos2) => swapPosition(passw, pos1.toInt, pos2.toInt)
       case patt3(letter) => rotateOnLetterPosition(passw, letter)
@@ -41,8 +41,8 @@ object Day21 extends App {
   // Password permutations are used to brute force guess the reverse of Rotate on Letter Position
   implicit val passwordPermutations = "abcdefgh".toCharArray.permutations.map(_.mkString).toArray
 
-  val unscrambledPassword = input.reverse.foldLeft(passwordInput2) { (passw, line) =>
-    line match {
+  val unscrambledPassword = input.reverse.foldLeft(passwordInput2) { (passw, instruction) =>
+    instruction match {
       case patt1(direction, steps) => reverseRotate(passw, direction, steps.toInt)
       case patt2(pos1, pos2) => swapPosition(passw, pos1.toInt, pos2.toInt)
       case patt3(letter) => reverseRrotateOnLetterPosition(passw, letter)
@@ -60,12 +60,10 @@ object Day21 extends App {
   @tailrec
   def rotate(s: String, direction: String, steps: Int): String = {
     if (steps == 0) s
-    else {
-      direction match {
-        case "left" => rotate(s.tail + s.head, direction, steps - 1)
-        case "right" => rotate(s.takeRight(1) + s.dropRight(1), direction, steps - 1)
-        case _ => s
-      }
+    else direction match {
+      case "left" => rotate(s.tail + s.head, direction, steps - 1)
+      case "right" => rotate(s.takeRight(1) + s.dropRight(1), direction, steps - 1)
+      case _ => s
     }
   }
 
@@ -77,14 +75,14 @@ object Day21 extends App {
     }
   }
 
-  def swapPosition(s: String, position1: Integer, position2: Integer): String = {
-    val (p1, p2) = orderPositions(position1, position2)
+  def swapPosition(s: String, pos1: Integer, pos2: Integer): String = {
+    val (p1, p2) = orderPositions(pos1, pos2)
     s.slice(0, p1) + s(p2) + s.slice(p1 + 1, p2) + s(p1) + s.slice(p2 + 1, s.length)
   }
 
   def rotateOnLetterPosition(s: String, letter: String): String = {
-    val p = s.indexOf(letter)
-    val steps = 1 + p + (if (p >= 4) 1 else 0)
+    val pos = s.indexOf(letter)
+    val steps = 1 + pos + (if (pos >= 4) 1 else 0)
     rotate(s, "right", steps)
   }
 
@@ -94,21 +92,28 @@ object Day21 extends App {
       .head
   }
 
-  def swapLetter(s: String, l1: String, l2: String): String = swapPosition(s, s.indexOf(l1), s.indexOf(l2))
+  def swapLetter(s: String, letter1: String, letter2: String): String = {
+    swapPosition(s, s.indexOf(letter1), s.indexOf(letter2))
+  }
 
-  def reversePositions(s: String, position1: Int, position2: Int): String = {
-    val (p1, p2) = orderPositions(position1, position2)
+  def reversePositions(s: String, pos1: Int, pos2: Int): String = {
+    val (p1, p2) = orderPositions(pos1, pos2)
     s.slice(0, p1) + s.slice(p1, p2 + 1).reverse + s.slice(p2 + 1, s.length)
   }
 
-  def movePosition(s: String, position1: Int, position2: Int): String = {
-    val letter = s(position1)
-    val tmp = s.slice(0, position1) + s.slice(position1 + 1, s.length)
-    tmp.slice(0, position2) + letter + tmp.slice(position2, s.length)
+  def movePosition(s: String, pos1: Int, pos2: Int): String = {
+    val letter = s(pos1)
+    val tmp = s.slice(0, pos1) + s.slice(pos1 + 1, s.length)
+    tmp.slice(0, pos2) + letter + tmp.slice(pos2, s.length)
   }
 
-  def orderPositions(p1: Int, p2: Int): (Int, Int) = {
-    if (p1 < p2) (p1, p2) else (p2, p1)
+  def orderPositions(pos1: Int, pos2: Int): (Int, Int) = {
+    if (pos1 < pos2) (pos1, pos2) else (pos2, pos1)
+  }
+
+  class Direction extends Enumeration {
+    val LEFT = "left"
+    val RIGHT = "right"
   }
 
 }
