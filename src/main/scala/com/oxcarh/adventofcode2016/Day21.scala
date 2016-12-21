@@ -111,9 +111,4 @@ object Day21 extends App {
     if (pos1 < pos2) (pos1, pos2) else (pos2, pos1)
   }
 
-  class Direction extends Enumeration {
-    val LEFT = "left"
-    val RIGHT = "right"
-  }
-
 }
