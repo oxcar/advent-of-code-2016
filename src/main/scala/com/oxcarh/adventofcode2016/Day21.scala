@@ -1,3 +1,7 @@
+
+// Day 21: Scrambled Letters and Hash
+// https://adventofcode.com/2016/day/21
+
 package com.oxcarh.adventofcode2016
 
 object Day21 extends App {
