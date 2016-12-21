@@ -9,12 +9,12 @@ object Day7 extends App {
   val input = Tools.loadDayInputAsText(day = 7)
 
   // Solution 1 -----------------------------------------------------------
-  val solution1 = input.split("\n").count(supportsTLS)
-  println(s"Solution 1: $solution1")
+
+  println(s"Solution 1: ${input.split("\n").count(supportsTLS)}")
 
   // Solution 2 -----------------------------------------------------------
-  val solution2 = input.split("\n").count(supportsSSL)
-  println(s"Solution 2: $solution2")
+
+  println(s"Solution 2: ${input.split("\n").count(supportsSSL)}")
 
   // ----------------------------------------------------------------------
 
