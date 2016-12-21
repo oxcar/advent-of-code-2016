@@ -6,15 +6,15 @@ package com.oxcarh.adventofcode2016
 
 object Day7 extends App {
 
-  val input = Tools.loadDayInputAsText(day = 7)
+  val input = Tools.loadDayInputAsText(day = 7).split("\n")
 
   // Solution 1 -----------------------------------------------------------
 
-  println(s"Solution 1: ${input.split("\n").count(supportsTLS)}")
+  println(s"Solution 1: ${input.count(supportsTLS)}")
 
   // Solution 2 -----------------------------------------------------------
 
-  println(s"Solution 2: ${input.split("\n").count(supportsSSL)}")
+  println(s"Solution 2: ${input.count(supportsSSL)}")
 
   // ----------------------------------------------------------------------
 
@@ -23,8 +23,8 @@ object Day7 extends App {
   }
 
   def hasABBA(ip: String): Boolean = {
-    val p = """.*([a-z])((?:(?!\1).))(\2)\1.*""".r
-    p.findAllMatchIn(ip).nonEmpty
+    val abbaPattern = """.*([a-z])((?:(?!\1).))(\2)\1.*""".r
+    abbaPattern.findAllMatchIn(ip).nonEmpty
   }
 
   def hasABBAInsideBrackets(ip: String): Boolean = {
@@ -46,8 +46,8 @@ object Day7 extends App {
   }
 
   def extractABAs(sip: String): Array[String] = {
-    val p = """(?=(([a-z])(?!\2)[a-z]\2))""".r
-    p.findAllMatchIn(sip).map(_.group(1)).toArray
+    val abaPattern = """(?=(([a-z])(?!\2)[a-z]\2))""".r
+    abaPattern.findAllMatchIn(sip).map(_.group(1)).toArray
   }
 
 }
