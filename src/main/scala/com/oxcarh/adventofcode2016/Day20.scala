@@ -1,9 +1,10 @@
-package com.oxcarh.adventofcode2016
-
-import scala.collection.mutable.ArrayBuffer
 
 // Day 20: Firewall Rules
 // https://adventofcode.com/2016/day/20
+
+package com.oxcarh.adventofcode2016
+
+import scala.collection.mutable.ArrayBuffer
 
 object Day20 extends App {
 
@@ -18,15 +19,15 @@ object Day20 extends App {
     }
     .sortWith(_._1 < _._1)
 
-  val candidates = ipRanges.map(_._2 + 1).filter(_ <= maxIp)
+  val candidateIps = ipRanges.map(_._2 + 1).filter(_ <= maxIp)
   val allowedIps = ArrayBuffer[Long]()
 
-  for (candiate <- candidates) {
+  for (ip <- candidateIps) {
     val ipRangeCollision = ipRanges.foldLeft(0) { (acc, rango) =>
-      if (rango._1 <= candiate && candiate <= rango._2) acc + 1
+      if (rango._1 <= ip && ip <= rango._2) acc + 1
       else acc
     }
-    if (ipRangeCollision == 0) allowedIps += candiate
+    if (ipRangeCollision == 0) allowedIps += ip
   }
 
   // Solution 1 ------------------------------------------------------------

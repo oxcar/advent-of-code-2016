@@ -1,5 +1,5 @@
 
-// Day 6: Internet Protocol Version 7
+// Day 7: Internet Protocol Version 7
 // https://adventofcode.com/2016/day/7
 
 package com.oxcarh.adventofcode2016
@@ -9,19 +9,11 @@ object Day7 extends App {
   val input = Tools.loadDayInputAsText(day = 7)
 
   // Solution 1 -----------------------------------------------------------
-
-  val solution1 = input
-    .split("\n")
-    .count(supportsTLS)
-
+  val solution1 = input.split("\n").count(supportsTLS)
   println(s"Solution 1: $solution1")
 
   // Solution 2 -----------------------------------------------------------
-
-  val solution2 = input
-    .split("\n")
-    .count(supportsSSL)
-
+  val solution2 = input.split("\n").count(supportsSSL)
   println(s"Solution 2: $solution2")
 
   // ----------------------------------------------------------------------
@@ -54,8 +46,8 @@ object Day7 extends App {
   }
 
   def extractABAs(sip: String): Array[String] = {
-    val p = """([a-z])((?:(?!\1)[a-z]))\1""".r
-    sip.sliding(3).flatMap(p.findFirstIn).toArray
+    val p = """(?=(([a-z])(?!\2)[a-z]\2))""".r
+    p.findAllMatchIn(sip).map(_.group(1)).toArray
   }
 
 }
