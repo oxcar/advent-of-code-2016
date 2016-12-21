@@ -1,10 +1,10 @@
+
+// Day 2: Bathroom Security
+// https://adventofcode.com/2016/day/2
+
 package com.oxcarh.adventofcode2016
 
-import com.oxcarh.adventofcode2016.Tools._
-
 object Day2 extends App {
-
-  println("Day 2: Bathroom Security")
 
   val keypad1 = Array(
     Array("1", "2", "3"),
@@ -20,31 +20,38 @@ object Day2 extends App {
     Array("0", "0", "D", "0", "0")
   )
 
-  val input = loadDayInputAsText(2).split("\n")
+  val input = Tools.loadDayInputAsText(2).split("\n")
 
-  // Soultion 1
-  var state = State(Position(1, 1))
+  // Solution 1 ------------------------------------------------------------
+
   implicit var keypad = keypad1
   var solution1 = Array[String]()
-  input.foreach { line =>
-    line.foreach { direction =>
-      state = state.move(direction.toString)
+
+  input.foldLeft(State(Position(1, 1))) { (state, line) =>
+    line.foldLeft(state) { (state, instruction) =>
+      state.move(instruction.toString)
     }
     solution1 = solution1 ++ Array(keypad(state.position.x)(state.position.y))
+    state
   }
+
   println(s"Solution 1: ${solution1.mkString}")
 
-  // Soultion 2
-  state = State(Position(1, 1))
+  // Solution 2 ------------------------------------------------------------
+
   keypad = keypad2
   var solution2 = Array[String]()
-  input.foreach { line =>
-    line.foreach { direction =>
-      state = state.move(direction.toString)
+  input.foldLeft(State(Position(1, 1))) { (state, line) =>
+    line.foldLeft(state) { (state, instruction) =>
+      state.move(instruction.toString)
     }
     solution2 = solution2 ++ Array(keypad(state.position.x)(state.position.y))
+    state
   }
+
   println(s"Solution 2: ${solution2.mkString}")
+
+  // ----------------------------------------------------------------------
 
   case class Position(x: Int, y: Int) {
 
