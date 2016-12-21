@@ -2,7 +2,9 @@
 
 This repo holds my [Advent of Code 2016](http://adventofcode.com/2016/) solutions.
 
-I'm using Scala (2.12) to solve the problems. 
+I'm using Scala (2.12) to solve the problems.
+ 
+More info at https://www.reddit.com/r/adventofcode/.
 
 ## Solved &#8594; 20 &#x2605;
 
