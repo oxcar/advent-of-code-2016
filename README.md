@@ -21,6 +21,7 @@ More info at:
 * [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day19.scala)
 * [Day 20: Firewall Rules](https://adventofcode.com/2016/day/20) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day20.scala)
 * [Day 21: Scrambled Letters and Hash](https://adventofcode.com/2016/day/21) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day21.scala)
+* [Day 22: Grid Computing](https://adventofcode.com/2016/day/22) &#x2605;&#x2605; &#8594; [Solution](https://github.com/oxcarh/advent-of-code-2016/blob/master/src/main/scala/com/oxcarh/adventofcode2016/Day22.scala)
  
 ## Not solved
 
@@ -45,6 +46,7 @@ More info at:
 ````
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 22   02:04:41    467      0   02:56:34    192      0
  21   01:08:45    288      0   01:34:49    246      0
  20   01:43:22    488      0   01:45:45    392      0
  19   05:30:18    961      0   06:34:24    514      0
